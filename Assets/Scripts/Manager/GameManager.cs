@@ -5,7 +5,6 @@ namespace BlackNWhiteShooter.Manager
     public class GameManager : MonoBehaviour
     {
         public static GameManager instance = null;
-        private BoardManager boardScript;
 
         void Awake()
         {
@@ -21,14 +20,11 @@ namespace BlackNWhiteShooter.Manager
 
             DontDestroyOnLoad(gameObject);
 
-            boardScript = GetComponent<BoardManager>();
-
             InitGame();
         }
 
         void InitGame()
         {
-            boardScript.SetupScene();
         }
     }
 }
