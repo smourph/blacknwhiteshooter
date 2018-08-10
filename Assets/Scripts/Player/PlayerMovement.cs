@@ -11,8 +11,19 @@ namespace BlackNWhiteShooter.Player
             float horizontalAxis = Input.GetAxisRaw("Horizontal");
             float verticalAxis = Input.GetAxisRaw("Vertical");
 
-            // The direction move is relative to the orientation of the player
-            Vector2 direction = _transform.up * verticalAxis + _transform.right * horizontalAxis;
+            /** To prevents weird moves when the vessel approach to the position
+             * of the mouse, we set a minimum distance to allow the movement **/
+            Vector2 direction;
+            if (Vector2.Distance(_transform.position, mousePosition) > 0.1f)
+            {
+                // The vessel moves relatively to the orientation of the player
+                direction = _transform.up * verticalAxis + _transform.right * horizontalAxis;
+            }
+            else
+            {
+                // The vessel doesn't move
+                direction = new Vector2(0.0f, 0.0f);
+            }
 
             // Give direction and orientation to calculate the next move
             Move(direction, mousePosition);
