@@ -109,3 +109,6 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/osx,unity,linux,macos,windows
 
+# Accepts WebGL Builds in docs/ folder
+!docs/[Bb]uild/
+!docs/[Bb]uilds/
